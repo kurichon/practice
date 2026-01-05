@@ -1,11 +1,12 @@
 from itertools import combinations
 
-S,k = input().strip().split()
+S, k = input().split()
+k = int(k)
 
-assert 0 < int(k) <= len(S)
-result_1 = sorted(''.join(c) for c in map(sorted, combinations(S, 1)))
-result_2 = sorted(''.join(c) for c in map(sorted, combinations(S, int(k))))
-for i in result_1:
-    print(''.join(i))
-for j in result_2:
-    print(''.join(j))
+assert 0 < k <= len(S)
+
+def print_combos(S, r):
+    for c in combinations(sorted(S), r):
+        print(''.join(c))
+for i in range(1, k+1):
+    print_combos(S,i)
